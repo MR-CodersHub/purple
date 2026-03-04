@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | PurpleNest</title>
+    <meta name="description" content="Complete your luxury purchase securely at PurpleNest.">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/checkout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <h1 class="section-title">Checkout</h1>
+
+            <div class="checkout-layout">
+                <!-- Shipping Form -->
+                <div class="checkout-card">
+                    <form id="checkout-form">
+                        <h3>Shipping Information</h3>
+
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" class="form-control" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Shipping Address</label>
+                            <input type="text" id="address" class="form-control" required placeholder="123 Luxury Lane">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" class="form-control" required placeholder="New York">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode">Zip Code</label>
+                                <input type="text" id="zipcode" class="form-control" required placeholder="10001">
+                            </div>
+                        </div>
+
+                        <h3>Payment Details</h3>
+                        <div class="payment-options">
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="card" checked>
+                                <span>Credit / Debit Card</span>
+                            </label>
+                            <div class="payment-details">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Card Number">
+                                </div>
+                                <div class="form-row">
+                                    <input type="text" class="form-control" placeholder="MM / YY">
+                                    <input type="text" class="form-control" placeholder="CVC">
+                                </div>
+                            </div>
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="cod">
+                                <span>Cash on Delivery</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn checkout-btn">Complete Purchase</button>
+                    </form>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <aside class="order-summary">
+                    <div class="checkout-card">
+                        <h3>Your Order</h3>
+                        <div id="order-items" class="order-items-list">
+                            <!-- Injected via JS -->
+                        </div>
+                        <div class="order-total-row">
+                            <span class="order-total-label">Total</span>
+                            <span id="order-total" class="order-total-amount">$0.00</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"></footer>
+
+</body>
+
+</html>

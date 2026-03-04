@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | PurpleNest Portal</title>
+    <meta name="description"
+        content="PurpleNest Administration — Analytics, catalog management, orders, users, and settings.">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- ── Global Header ──────────────────────────────────── -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+
+                <div class="nav-icons">
+                    <div class="nav-icon"><a href="wishlist.html"><i class="far fa-heart"></i></a></div>
+                    <div class="nav-icon"><a href="cart.html"><i class="fas fa-shopping-bag"></i><span
+                                class="badge cart-count">0</span></a></div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="nav-icon dash-hamburger" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ── Dashboard Shell ────────────────────────────────── -->
+    <div class="dash-shell">
+
+        <!-- Sidebar -->
+        <aside class="dash-sidebar" id="adminSidebar">
+            <div class="sidebar-profile">
+                <div class="sidebar-avatar">A</div>
+                <div class="sidebar-profile-info">
+                    <h4>Admin Portal</h4>
+                    <span>Super Administrator</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-label">Overview</div>
+                <a class="sidebar-link active" data-section="analytics" onclick="switchSection(this,'analytics')">
+                    <i class="fas fa-chart-pie"></i> Analytics
+                </a>
+
+                <div class="sidebar-section-label">Catalog</div>
+                <a class="sidebar-link" data-section="products" onclick="switchSection(this,'products')">
+                    <i class="fas fa-boxes"></i> Manage Products
+                </a>
+                <a class="sidebar-link" data-section="orders" onclick="switchSection(this,'orders')">
+                    <i class="fas fa-shopping-cart"></i> Manage Orders
+                </a>
+
+                <div class="sidebar-section-label">People</div>
+                <a class="sidebar-link" data-section="users" onclick="switchSection(this,'users')">
+                    <i class="fas fa-users-cog"></i> Manage Users
+                </a>
+
+                <div class="sidebar-section-label">System</div>
+                <a class="sidebar-link" data-section="settings" onclick="switchSection(this,'settings')">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+
+                <div class="sidebar-divider"></div>
+                <a class="sidebar-link" href="../index.html">
+                    <i class="fas fa-external-link-alt"></i> Storefront
+                </a>
+                <a class="sidebar-link danger" onclick="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Overlay for mobile -->
+        <div class="dash-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+        <!-- ── Main Content ──────────────────────────────── -->
+        <main class="dash-main">
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Analytics
+            ════════════════════════════════════════════ -->
+            <section class="dash-section active" id="sec-analytics">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Analytics</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Analytics Overview</h1>
+                        <p>System performance at a glance — updated live</p>
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                        <button class="dash-btn ghost"><i class="fas fa-download"></i> Export</button>
+                        <button class="dash-btn primary"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+
+                <!-- KPI Stats -->
+                <div class="dash-stats-row">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="stat-info">
+                            <h3>1,284</h3>
+                            <p>Total Orders</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> +8.2% this month</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="stat-info">
+                            <h3>$142K</h3>
+                            <p>Revenue</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> +12.5% this month</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap purple"><i class="fas fa-boxes"></i></div>
+                        <div class="stat-info">
+                            <h3>482</h3>
+                            <p>Products</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> +14 new</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap blue"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>8,102</h3>
+                            <p>Registered Users</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> +122 today</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-2">
+                    <!-- Revenue Chart -->
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-chart-bar"></i> Monthly Revenue</div>
+                            <span
+                                style="font-size:0.78rem;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;">Last
+                                7 months</span>
+                        </div>
+                        <div class="mini-bars" style="height:120px;margin-bottom:12px;">
+                            <div class="mini-bar" style="height:55%;" title="Aug: $68K"></div>
+                            <div class="mini-bar" style="height:70%;" title="Sep: $88K"></div>
+                            <div class="mini-bar" style="height:60%;" title="Oct: $75K"></div>
+                            <div class="mini-bar" style="height:80%;" title="Nov: $101K"></div>
+                            <div class="mini-bar" style="height:65%;" title="Dec: $82K"></div>
+                            <div class="mini-bar" style="height:90%;" title="Jan: $114K"></div>
+                            <div class="mini-bar highlight" style="height:100%;" title="Feb: $142K"></div>
+                        </div>
+                        <div
+                            style="display:flex;justify-content:space-between;font-size:0.72rem;color:rgba(255,255,255,0.3);font-family:'Inter',sans-serif;">
+                            <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span>
+                        </div>
+                    </div>
+
+                    <!-- Category Breakdown -->
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-layer-group"></i> Sales by Category</div>
+                        </div>
+                        <div class="progress-row">
+                            <div class="progress-label"><span>Fashion</span><span>38%</span></div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width:38%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-row">
+                            <div class="progress-label"><span>Electronics</span><span>27%</span></div>
+                            <div class="progress-track">
+                                <div class="progress-fill blue" style="width:27%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-row">
+                            <div class="progress-label"><span>Home Decor</span><span>18%</span></div>
+                            <div class="progress-track">
+                                <div class="progress-fill purple" style="width:18%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-row">
+                            <div class="progress-label"><span>Beauty</span><span>11%</span></div>
+                            <div class="progress-track">
+                                <div class="progress-fill green" style="width:11%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-row">
+                            <div class="progress-label"><span>Accessories</span><span>6%</span></div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width:6%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity + Top Products -->
+                <div class="dash-grid-2">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-bell"></i> Recent Activity</div>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-dot green"></div>
+                                <div class="activity-body">
+                                    <p>New order <strong>#PN-91042</strong> placed by Julianne M.</p>
+                                    <span>2 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot gold"></div>
+                                <div class="activity-body">
+                                    <p>Product <strong>Silk Scarf Luxe</strong> stock running low (3 left)</p>
+                                    <span>18 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot blue"></div>
+                                <div class="activity-body">
+                                    <p>New user <strong>marcus.reed@email.com</strong> registered</p>
+                                    <span>34 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot red"></div>
+                                <div class="activity-body">
+                                    <p>Order <strong>#PN-90988</strong> was cancelled by customer</p>
+                                    <span>1 hour ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot purple"></div>
+                                <div class="activity-body">
+                                    <p>Promo code <strong>LUXE20</strong> used 47 times today</p>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-fire"></i> Top Selling Products</div>
+                        </div>
+                        <div class="product-row-card">
+                            <div class="product-thumb"><i class="fas fa-gem"></i></div>
+                            <div class="product-row-info">
+                                <h4>Diamond Pendant Necklace</h4>
+                                <span>Accessories • 142 sold</span>
+                            </div>
+                            <div class="product-row-price">$1,240</div>
+                        </div>
+                        <div class="product-row-card">
+                            <div class="product-thumb"><i class="fas fa-tshirt"></i></div>
+                            <div class="product-row-info">
+                                <h4>Silk Couture Blazer</h4>
+                                <span>Fashion • 98 sold</span>
+                            </div>
+                            <div class="product-row-price">$480</div>
+                        </div>
+                        <div class="product-row-card">
+                            <div class="product-thumb"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="product-row-info">
+                                <h4>Smart Watch Pro X</h4>
+                                <span>Electronics • 87 sold</span>
+                            </div>
+                            <div class="product-row-price">$890</div>
+                        </div>
+                        <div class="product-row-card">
+                            <div class="product-thumb"><i class="fas fa-couch"></i></div>
+                            <div class="product-row-info">
+                                <h4>Artisan Velvet Cushion Set</h4>
+                                <span>Home Decor • 74 sold</span>
+                            </div>
+                            <div class="product-row-price">$220</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Manage Products
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-products">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Manage Products</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Manage Products</h1>
+                        <p>482 products in catalog — 14 added this month</p>
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                        <div class="dash-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search products…">
+                        </div>
+                        <button class="dash-btn primary"><i class="fas fa-plus"></i> Add Product</button>
+                    </div>
+                </div>
+
+                <div class="dash-stats-row" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>448</h3>
+                            <p>In Stock</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <h3>24</h3>
+                            <p>Low Stock</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap red"><i class="fas fa-times-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>10</h3>
+                            <p>Out of Stock</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap purple"><i class="fas fa-star"></i></div>
+                        <div class="stat-info">
+                            <h3>62</h3>
+                            <p>Featured</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-card-header">
+                        <div class="dash-card-title"><i class="fas fa-list"></i> Product Catalog</div>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.78rem;"><i
+                                    class="fas fa-filter"></i> Filter</button>
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.78rem;"><i
+                                    class="fas fa-sort"></i> Sort</button>
+                        </div>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Sales</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Diamond Pendant Necklace</strong></td>
+                                    <td>Accessories</td>
+                                    <td>$1,240.00</td>
+                                    <td>28</td>
+                                    <td><span class="badge-pill in-stock">In Stock</span></td>
+                                    <td>142</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Silk Couture Blazer</strong></td>
+                                    <td>Fashion</td>
+                                    <td>$480.00</td>
+                                    <td>3</td>
+                                    <td><span class="badge-pill low-stock">Low Stock</span></td>
+                                    <td>98</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Smart Watch Pro X</strong></td>
+                                    <td>Electronics</td>
+                                    <td>$890.00</td>
+                                    <td>51</td>
+                                    <td><span class="badge-pill in-stock">In Stock</span></td>
+                                    <td>87</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Artisan Velvet Cushion Set</strong></td>
+                                    <td>Home Decor</td>
+                                    <td>$220.00</td>
+                                    <td>0</td>
+                                    <td><span class="badge-pill out-stock">Out of Stock</span></td>
+                                    <td>74</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rose Gold Perfume Elixir</strong></td>
+                                    <td>Beauty</td>
+                                    <td>$340.00</td>
+                                    <td>19</td>
+                                    <td><span class="badge-pill in-stock">In Stock</span></td>
+                                    <td>63</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cashmere Lounge Set</strong></td>
+                                    <td>Fashion</td>
+                                    <td>$620.00</td>
+                                    <td>7</td>
+                                    <td><span class="badge-pill low-stock">Low Stock</span></td>
+                                    <td>55</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Marble Desk Organizer</strong></td>
+                                    <td>Home Decor</td>
+                                    <td>$185.00</td>
+                                    <td>34</td>
+                                    <td><span class="badge-pill in-stock">In Stock</span></td>
+                                    <td>48</td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon danger" title="Delete"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:12px;">
+                        <span
+                            style="font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;">Showing
+                            7 of 482 products</span>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 18px;font-size:0.8rem;">← Prev</button>
+                            <button class="dash-btn primary" style="padding:8px 18px;font-size:0.8rem;">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Manage Orders
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-orders">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Manage Orders</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Manage Orders</h1>
+                        <p>1,284 total orders — 38 pending fulfillment</p>
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                        <div class="dash-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search orders…">
+                        </div>
+                        <button class="dash-btn ghost"><i class="fas fa-download"></i> Export CSV</button>
+                    </div>
+                </div>
+
+                <div class="dash-stats-row" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <h3>38</h3>
+                            <p>Pending</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap blue"><i class="fas fa-truck"></i></div>
+                        <div class="stat-info">
+                            <h3>124</h3>
+                            <p>Shipped</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-check-double"></i></div>
+                        <div class="stat-info">
+                            <h3>1,098</h3>
+                            <p>Delivered</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap red"><i class="fas fa-ban"></i></div>
+                        <div class="stat-info">
+                            <h3>24</h3>
+                            <p>Cancelled</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-card-header">
+                        <div class="dash-card-title"><i class="fas fa-receipt"></i> Order List</div>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.78rem;">All
+                                Status</button>
+                        </div>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#PN-91042</strong></td>
+                                    <td>Julianne Moore</td>
+                                    <td>Feb 18, 2026</td>
+                                    <td>3</td>
+                                    <td>$2,140.00</td>
+                                    <td><span class="badge-pill processing">Processing</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Ship"><i class="fas fa-truck"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-91038</strong></td>
+                                    <td>Marcus Reed</td>
+                                    <td>Feb 17, 2026</td>
+                                    <td>1</td>
+                                    <td>$890.00</td>
+                                    <td><span class="badge-pill shipped">Shipped</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Track"><i
+                                                    class="fas fa-map-marker-alt"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-91025</strong></td>
+                                    <td>Sophia Laurent</td>
+                                    <td>Feb 16, 2026</td>
+                                    <td>5</td>
+                                    <td>$3,680.00</td>
+                                    <td><span class="badge-pill delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Invoice"><i
+                                                    class="fas fa-file-invoice"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-91010</strong></td>
+                                    <td>Ethan Clarke</td>
+                                    <td>Feb 15, 2026</td>
+                                    <td>2</td>
+                                    <td>$1,560.00</td>
+                                    <td><span class="badge-pill pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Ship"><i class="fas fa-truck"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-90988</strong></td>
+                                    <td>Amara Singh</td>
+                                    <td>Feb 14, 2026</td>
+                                    <td>1</td>
+                                    <td>$340.00</td>
+                                    <td><span class="badge-pill cancelled">Cancelled</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Refund"><i class="fas fa-undo"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-90975</strong></td>
+                                    <td>Lena Hoffman</td>
+                                    <td>Feb 13, 2026</td>
+                                    <td>4</td>
+                                    <td>$2,890.00</td>
+                                    <td><span class="badge-pill delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Invoice"><i
+                                                    class="fas fa-file-invoice"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:12px;">
+                        <span
+                            style="font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;">Showing
+                            6 of 1,284 orders</span>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 18px;font-size:0.8rem;">← Prev</button>
+                            <button class="dash-btn primary" style="padding:8px 18px;font-size:0.8rem;">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Manage Users
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-users">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Manage Users</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Manage Users</h1>
+                        <p>8,102 registered members — 122 joined today</p>
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                        <div class="dash-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search users…">
+                        </div>
+                        <button class="dash-btn primary"><i class="fas fa-user-plus"></i> Add User</button>
+                    </div>
+                </div>
+
+                <div class="dash-stats-row" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-user-check"></i></div>
+                        <div class="stat-info">
+                            <h3>7,840</h3>
+                            <p>Active Users</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-crown"></i></div>
+                        <div class="stat-info">
+                            <h3>312</h3>
+                            <p>Elite Members</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap red"><i class="fas fa-user-slash"></i></div>
+                        <div class="stat-info">
+                            <h3>262</h3>
+                            <p>Suspended</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap blue"><i class="fas fa-user-plus"></i></div>
+                        <div class="stat-info">
+                            <h3>122</h3>
+                            <p>New Today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-card-header">
+                        <div class="dash-card-title"><i class="fas fa-users"></i> User Directory</div>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Joined</th>
+                                    <th>Orders</th>
+                                    <th>Spent</th>
+                                    <th>Tier</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Julianne Moore</strong></td>
+                                    <td>j.moore@email.com</td>
+                                    <td>Jan 12, 2025</td>
+                                    <td>12</td>
+                                    <td>$14,820</td>
+                                    <td><span class="badge-pill processing"
+                                            style="background:rgba(245,166,35,0.18);color:#F5A623;"><i
+                                                class="fas fa-crown"></i> Elite</span></td>
+                                    <td><span class="badge-pill active">Active</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon danger" title="Suspend"><i
+                                                    class="fas fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Marcus Reed</strong></td>
+                                    <td>marcus.reed@email.com</td>
+                                    <td>Feb 18, 2026</td>
+                                    <td>1</td>
+                                    <td>$890</td>
+                                    <td><span class="badge-pill shipped"
+                                            style="background:rgba(52,152,219,0.18);color:#3498db;">Standard</span></td>
+                                    <td><span class="badge-pill active">Active</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon danger" title="Suspend"><i
+                                                    class="fas fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sophia Laurent</strong></td>
+                                    <td>sophia.l@email.com</td>
+                                    <td>Mar 5, 2025</td>
+                                    <td>8</td>
+                                    <td>$9,240</td>
+                                    <td><span class="badge-pill processing"
+                                            style="background:rgba(245,166,35,0.18);color:#F5A623;"><i
+                                                class="fas fa-crown"></i> Elite</span></td>
+                                    <td><span class="badge-pill active">Active</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon danger" title="Suspend"><i
+                                                    class="fas fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ethan Clarke</strong></td>
+                                    <td>e.clarke@email.com</td>
+                                    <td>Jun 20, 2025</td>
+                                    <td>3</td>
+                                    <td>$2,450</td>
+                                    <td><span class="badge-pill shipped"
+                                            style="background:rgba(52,152,219,0.18);color:#3498db;">Standard</span></td>
+                                    <td><span class="badge-pill inactive">Suspended</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon" title="Restore"><i
+                                                    class="fas fa-undo"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Amara Singh</strong></td>
+                                    <td>amara.s@email.com</td>
+                                    <td>Sep 3, 2025</td>
+                                    <td>2</td>
+                                    <td>$680</td>
+                                    <td><span class="badge-pill shipped"
+                                            style="background:rgba(52,152,219,0.18);color:#3498db;">Standard</span></td>
+                                    <td><span class="badge-pill active">Active</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon danger" title="Suspend"><i
+                                                    class="fas fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:12px;">
+                        <span
+                            style="font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;">Showing
+                            5 of 8,102 users</span>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 18px;font-size:0.8rem;">← Prev</button>
+                            <button class="dash-btn primary" style="padding:8px 18px;font-size:0.8rem;">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Settings
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-settings">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Settings</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>System Settings</h1>
+                        <p>Configure your store preferences and notifications</p>
+                    </div>
+                    <button class="dash-btn primary"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+
+                <div class="dash-grid-2">
+                    <!-- Store Info -->
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-store"></i> Store Information</div>
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Store Name</label>
+                            <input class="dash-input" type="text" value="PurpleNest Luxury Group">
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Store Email</label>
+                            <input class="dash-input" type="email" value="concierge@purplenest.com">
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Support Phone</label>
+                            <input class="dash-input" type="text" value="+1 (555) 123-4567">
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Store Address</label>
+                            <textarea
+                                class="dash-textarea">123 Luxury Lane, Prestige Tower, New York, NY 10001</textarea>
+                        </div>
+                        <button class="dash-btn primary" style="width:100%;justify-content:center;"><i
+                                class="fas fa-save"></i> Update Store Info</button>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div>
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <div class="dash-card-title"><i class="fas fa-bell"></i> Notifications</div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>New Order Alerts</h4>
+                                    <p>Get notified when a new order is placed</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Low Stock Warnings</h4>
+                                    <p>Alert when product stock falls below 5</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>New User Registrations</h4>
+                                    <p>Notify on each new account creation</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Weekly Revenue Report</h4>
+                                    <p>Receive weekly performance summary</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <div class="dash-card-title"><i class="fas fa-shield-alt"></i> Security</div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Two-Factor Authentication</h4>
+                                    <p>Require 2FA for admin login</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Session Timeout (30 min)</h4>
+                                    <p>Auto-logout after inactivity</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div style="margin-top:18px;">
+                                <button class="dash-btn danger" style="width:100%;justify-content:center;"><i
+                                        class="fas fa-key"></i> Change Admin Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle handled by header hamburger -->
+
+    <footer class="footer"></footer>
+
+    <script>
+        // ── Section Switcher ──────────────────────────────────
+        function switchSection(linkEl, sectionId) {
+            // Update sidebar links
+            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            linkEl.classList.add('active');
+
+            // Show correct section
+            document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById('sec-' + sectionId);
+            if (target) target.classList.add('active');
+
+            // Close sidebar on mobile after navigation
+            if (window.innerWidth <= 900) closeSidebar();
+        }
+
+        // ── Mobile Sidebar ────────────────────────────────────
+        function toggleSidebar() {
+            const sidebar = document.getElementById('adminSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('visible');
+        }
+
+        function closeSidebar() {
+            document.getElementById('adminSidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('visible');
+        }
+
+        // ── Logout Confirmation ───────────────────────────────
+        function confirmLogout() {
+            if (confirm('Are you sure you want to log out of the Admin Portal?')) {
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

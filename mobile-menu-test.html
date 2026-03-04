@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test | PurpleNest</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="assets/js/main.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="pages/about.html" class="nav-link">About</a></li>
+                    <li><a href="pages/shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="pages/platform.html" class="nav-link">Platform</a></li>
+                    <li><a href="pages/services.html" class="nav-link">Services</a></li>
+                    <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="pages/wishlist.html"><i class="far fa-heart"></i></a>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="pages/cart.html">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="pages/login.html">Log In</a>
+                            <a href="pages/signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Test Content -->
+    <div style="padding: 150px 20px; text-align: center; background: var(--gradient-purple); min-height: 100vh;">
+        <h1 style="color: white; font-size: 3rem; margin-bottom: 20px;">Mobile Menu Test Page</h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+            Resize your browser to mobile width (≤900px) and tap the hamburger menu icon to test the mobile navigation.
+        </p>
+        <div
+            style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px; max-width: 500px; margin: 40px auto;">
+            <h3 style="color: var(--accent); margin-bottom: 15px;">Expected Behavior:</h3>
+            <ul style="color: white; text-align: left; line-height: 2;">
+                <li>✅ Hamburger icon visible on mobile</li>
+                <li>✅ Menu slides in from right</li>
+                <li>✅ All 7 navigation links visible in white text</li>
+                <li>✅ Close button (X) at top right</li>
+                <li>✅ Dark overlay behind menu</li>
+                <li>✅ Background scroll locked</li>
+                <li>✅ Menu closes on link click, overlay tap, or X button</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

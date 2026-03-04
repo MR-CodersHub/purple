@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | PurpleNest Luxury</title>
+    <meta name="description"
+        content="Manage your PurpleNest account — track orders, wishlist, addresses, and account settings.">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- ── Global Header ──────────────────────────────────── -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon"><a href="wishlist.html"><i class="far fa-heart"></i></a></div>
+                    <div class="nav-icon"><a href="cart.html"><i class="fas fa-shopping-bag"></i><span
+                                class="badge cart-count">0</span></a></div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ── Dashboard Shell ────────────────────────────────── -->
+    <div class="dash-shell">
+
+        <!-- Sidebar -->
+        <aside class="dash-sidebar" id="userSidebar">
+            <div class="sidebar-profile">
+                <div class="sidebar-avatar">J</div>
+                <div class="sidebar-profile-info">
+                    <h4>Julianne Moore</h4>
+                    <span style="color:#F5A623;"><i class="fas fa-crown" style="font-size:0.7rem;"></i> Elite
+                        Member</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-label">My Account</div>
+                <a class="sidebar-link active" data-section="overview" onclick="switchSection(this,'overview')">
+                    <i class="fas fa-id-card"></i> Profile Overview
+                </a>
+                <a class="sidebar-link" data-section="orders" onclick="switchSection(this,'orders')">
+                    <i class="fas fa-shopping-bag"></i> My Orders
+                </a>
+                <a class="sidebar-link" data-section="wishlist" onclick="switchSection(this,'wishlist')">
+                    <i class="fas fa-heart"></i> Wishlist
+                </a>
+
+                <div class="sidebar-section-label">Account</div>
+                <a class="sidebar-link" data-section="addresses" onclick="switchSection(this,'addresses')">
+                    <i class="fas fa-map-marker-alt"></i> Saved Addresses
+                </a>
+                <a class="sidebar-link" data-section="profile-settings"
+                    onclick="switchSection(this,'profile-settings')">
+                    <i class="fas fa-user-cog"></i> Profile Settings
+                </a>
+
+                <div class="sidebar-section-label">Help</div>
+                <a class="sidebar-link" data-section="support" onclick="switchSection(this,'support')">
+                    <i class="fas fa-headset"></i> Support
+                </a>
+
+                <div class="sidebar-divider"></div>
+                <a class="sidebar-link" href="shop.html">
+                    <i class="fas fa-store"></i> Continue Shopping
+                </a>
+                <a class="sidebar-link danger" onclick="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Overlay for mobile -->
+        <div class="dash-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+        <!-- ── Main Content ──────────────────────────────── -->
+        <main class="dash-main">
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Profile Overview
+            ════════════════════════════════════════════ -->
+            <section class="dash-section active" id="sec-overview">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Profile Overview</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Welcome back, Julianne!</h1>
+                        <p>Here's a summary of your PurpleNest account</p>
+                    </div>
+                    <button class="dash-btn primary"
+                        onclick="switchSection(document.querySelector('[data-section=profile-settings]'),'profile-settings')">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+
+                <!-- Profile Banner -->
+                <div class="dash-card"
+                    style="background:linear-gradient(135deg,rgba(122,62,125,0.4),rgba(90,42,95,0.6));border-color:rgba(245,166,35,0.2);margin-bottom:28px;">
+                    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+                        <div
+                            style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#F5A623,#F8B84E);display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;color:#fff;font-family:'Playfair Display',serif;box-shadow:0 8px 24px rgba(245,166,35,0.4);flex-shrink:0;">
+                            J</div>
+                        <div style="flex:1;min-width:0;">
+                            <h2
+                                style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:4px;">
+                                Julianne Moore</h2>
+                            <p
+                                style="color:rgba(255,255,255,0.6);font-family:'Inter',sans-serif;font-size:0.88rem;margin-bottom:8px;">
+                                concierge@purplenest.com</p>
+                            <span
+                                style="background:rgba(245,166,35,0.18);color:#F5A623;font-size:0.78rem;font-weight:700;padding:4px 14px;border-radius:50px;font-family:'Inter',sans-serif;letter-spacing:0.8px;"><i
+                                    class="fas fa-crown"></i> ELITE MEMBER</span>
+                        </div>
+                        <div style="text-align:right;flex-shrink:0;">
+                            <p
+                                style="font-size:0.78rem;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;margin-bottom:4px;">
+                                Member since</p>
+                            <p style="font-size:0.92rem;font-weight:600;color:#fff;font-family:'Inter',sans-serif;">
+                                January 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="dash-stats-row">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Total Orders</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 2 this month</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap purple"><i class="fas fa-heart"></i></div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>Wishlist Items</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="stat-info">
+                            <h3>$14.8K</h3>
+                            <p>Total Spent</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> Elite tier</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap blue"><i class="fas fa-star"></i></div>
+                        <div class="stat-info">
+                            <h3>2,480</h3>
+                            <p>Loyalty Points</p>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> +120 this week</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders + Wishlist Preview -->
+                <div class="dash-grid-2">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-clock"></i> Recent Orders</div>
+                            <a class="dash-btn ghost" style="padding:7px 14px;font-size:0.78rem;"
+                                onclick="switchSection(document.querySelector('[data-section=orders]'),'orders')">View
+                                All</a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-dot green"></div>
+                                <div class="activity-body">
+                                    <p><strong>#PN-91042</strong> — Diamond Pendant Necklace</p>
+                                    <span>Feb 18, 2026 • $2,140.00 • <span class="badge-pill processing"
+                                            style="font-size:0.7rem;padding:2px 8px;">Processing</span></span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot blue"></div>
+                                <div class="activity-body">
+                                    <p><strong>#PN-89241</strong> — Silk Couture Blazer</p>
+                                    <span>Oct 12, 2025 • $1,240.00 • <span class="badge-pill delivered"
+                                            style="font-size:0.7rem;padding:2px 8px;">Delivered</span></span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot gold"></div>
+                                <div class="activity-body">
+                                    <p><strong>#PN-87104</strong> — Smart Watch Pro X</p>
+                                    <span>Aug 5, 2025 • $890.00 • <span class="badge-pill delivered"
+                                            style="font-size:0.7rem;padding:2px 8px;">Delivered</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-gift"></i> Loyalty Rewards</div>
+                        </div>
+                        <div style="text-align:center;padding:10px 0 20px;">
+                            <div
+                                style="font-size:3rem;font-weight:800;color:#F5A623;font-family:'Inter',sans-serif;line-height:1;">
+                                2,480</div>
+                            <div
+                                style="font-size:0.82rem;color:rgba(255,255,255,0.45);font-family:'Inter',sans-serif;margin-bottom:20px;">
+                                Points Available</div>
+                            <div
+                                style="background:rgba(255,255,255,0.05);border-radius:12px;padding:16px;margin-bottom:16px;">
+                                <div
+                                    style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:0.82rem;font-family:'Inter',sans-serif;color:rgba(255,255,255,0.6);">
+                                    <span>Progress to Platinum</span><span>2,480 / 5,000</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width:49.6%"></div>
+                                </div>
+                            </div>
+                            <button class="dash-btn primary" style="width:100%;justify-content:center;"><i
+                                    class="fas fa-exchange-alt"></i> Redeem Points</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: My Orders
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-orders">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>My Orders</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>My Orders</h1>
+                        <p>Track and manage all your PurpleNest purchases</p>
+                    </div>
+                    <div class="dash-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search orders…">
+                    </div>
+                </div>
+
+                <div class="dash-stats-row" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-box"></i></div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Total Orders</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap blue"><i class="fas fa-truck"></i></div>
+                        <div class="stat-info">
+                            <h3>1</h3>
+                            <p>In Transit</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>10</h3>
+                            <p>Delivered</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap purple"><i class="fas fa-sync-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>1</h3>
+                            <p>Processing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-card-header">
+                        <div class="dash-card-title"><i class="fas fa-receipt"></i> Order History</div>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#PN-91042</strong></td>
+                                    <td>Feb 18, 2026</td>
+                                    <td>Diamond Pendant + 2 more</td>
+                                    <td>$2,140.00</td>
+                                    <td><span class="badge-pill processing">Processing</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View Details"><i
+                                                    class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Track Order"><i
+                                                    class="fas fa-map-marker-alt"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-90112</strong></td>
+                                    <td>Jan 30, 2026</td>
+                                    <td>Cashmere Lounge Set</td>
+                                    <td>$620.00</td>
+                                    <td><span class="badge-pill shipped">Shipped</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View Details"><i
+                                                    class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Track Order"><i
+                                                    class="fas fa-map-marker-alt"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-89241</strong></td>
+                                    <td>Oct 12, 2025</td>
+                                    <td>Silk Couture Blazer</td>
+                                    <td>$1,240.00</td>
+                                    <td><span class="badge-pill delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View Details"><i
+                                                    class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Download Invoice"><i
+                                                    class="fas fa-file-invoice"></i></button>
+                                            <button class="btn-icon" title="Reorder"><i
+                                                    class="fas fa-redo"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-87104</strong></td>
+                                    <td>Aug 5, 2025</td>
+                                    <td>Smart Watch Pro X</td>
+                                    <td>$890.00</td>
+                                    <td><span class="badge-pill delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View Details"><i
+                                                    class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Download Invoice"><i
+                                                    class="fas fa-file-invoice"></i></button>
+                                            <button class="btn-icon" title="Reorder"><i
+                                                    class="fas fa-redo"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-84320</strong></td>
+                                    <td>Jun 18, 2025</td>
+                                    <td>Rose Gold Perfume Elixir</td>
+                                    <td>$340.00</td>
+                                    <td><span class="badge-pill delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View Details"><i
+                                                    class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Download Invoice"><i
+                                                    class="fas fa-file-invoice"></i></button>
+                                            <button class="btn-icon" title="Reorder"><i
+                                                    class="fas fa-redo"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PN-81005</strong></td>
+                                    <td>Apr 2, 2025</td>
+                                    <td>Marble Desk Organizer + 1 more</td>
+                                    <td>$405.00</td>
+                                    <td><span class="badge-pill delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="btn-icon" title="View Details"><i
+                                                    class="fas fa-eye"></i></button>
+                                            <button class="btn-icon" title="Download Invoice"><i
+                                                    class="fas fa-file-invoice"></i></button>
+                                            <button class="btn-icon" title="Reorder"><i
+                                                    class="fas fa-redo"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:12px;">
+                        <span
+                            style="font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;">Showing
+                            6 of 12 orders</span>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 18px;font-size:0.8rem;">← Prev</button>
+                            <button class="dash-btn primary" style="padding:8px 18px;font-size:0.8rem;">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Wishlist
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-wishlist">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Wishlist</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>My Wishlist</h1>
+                        <p>8 items saved for later — don't let them sell out!</p>
+                    </div>
+                    <a href="shop.html" class="dash-btn primary"><i class="fas fa-plus"></i> Browse More</a>
+                </div>
+
+                <div class="dash-notice warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span><strong>Hurry!</strong> 2 items in your wishlist are running low on stock.</span>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-card-header">
+                        <div class="dash-card-title"><i class="fas fa-heart"></i> Saved Items</div>
+                        <button class="dash-btn ghost" style="padding:7px 14px;font-size:0.78rem;"><i
+                                class="fas fa-trash"></i> Clear All</button>
+                    </div>
+                    <div class="wishlist-grid">
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-gem"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Sapphire Drop Earrings</h4>
+                                <div class="price">$780.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-tshirt"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Velvet Evening Gown</h4>
+                                <div class="price">$1,120.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Noise-Cancelling Headphones</h4>
+                                <div class="price">$450.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-couch"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Linen Throw Blanket</h4>
+                                <div class="price">$195.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-spa"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Luxury Skincare Set</h4>
+                                <div class="price">$320.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-watch"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Gold Chronograph Watch</h4>
+                                <div class="price">$2,400.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-glasses"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Designer Sunglasses</h4>
+                                <div class="price">$580.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wishlist-card">
+                            <div class="wishlist-card-img"><i class="fas fa-leaf"></i></div>
+                            <div class="wishlist-card-body">
+                                <h4>Organic Candle Collection</h4>
+                                <div class="price">$145.00</div>
+                                <div style="display:flex;gap:8px;">
+                                    <button class="dash-btn primary"
+                                        style="flex:1;justify-content:center;padding:9px;font-size:0.78rem;"><i
+                                            class="fas fa-cart-plus"></i> Add to Cart</button>
+                                    <button class="btn-icon danger" title="Remove"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Saved Addresses
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-addresses">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Saved Addresses</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Saved Addresses</h1>
+                        <p>Manage your delivery and billing addresses</p>
+                    </div>
+                    <button class="dash-btn primary"><i class="fas fa-plus"></i> Add Address</button>
+                </div>
+
+                <div class="dash-grid-2">
+                    <div class="address-card default-addr">
+                        <span class="default-tag">Default</span>
+                        <h4><i class="fas fa-home" style="color:#F5A623;margin-right:8px;"></i>Home</h4>
+                        <p>Julianne Moore<br>123 Prestige Avenue, Apt 4B<br>New York, NY 10001<br>United States<br>+1
+                            (555) 987-6543</p>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="address-card">
+                        <h4><i class="fas fa-briefcase" style="color:#B77FB3;margin-right:8px;"></i>Office</h4>
+                        <p>Julianne Moore<br>Suite 800, Luminary Tower<br>Fifth Avenue, New York, NY 10022<br>United
+                            States<br>+1 (555) 246-8100</p>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-check"></i> Set Default</button>
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="address-card">
+                        <h4><i class="fas fa-plane" style="color:#3498db;margin-right:8px;"></i>Holiday Home</h4>
+                        <p>Julianne Moore<br>Villa Bella, 14 Côte d'Azur<br>Nice, 06000<br>France<br>+33 4 93 00 00 00
+                        </p>
+                        <div style="display:flex;gap:8px;">
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-check"></i> Set Default</button>
+                            <button class="dash-btn ghost" style="padding:8px 16px;font-size:0.8rem;"><i
+                                    class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+
+                    <!-- Add New Address Card -->
+                    <div class="address-card"
+                        style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;cursor:pointer;gap:12px;"
+                        onclick="alert('Add address form coming soon!')">
+                        <div
+                            style="width:52px;height:52px;border-radius:50%;background:rgba(245,166,35,0.12);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#F5A623;">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <p
+                            style="color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;font-size:0.88rem;text-align:center;margin:0;">
+                            Add a new delivery address</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Profile Settings
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-profile-settings">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Profile Settings</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Profile Settings</h1>
+                        <p>Update your personal information and preferences</p>
+                    </div>
+                    <button class="dash-btn primary"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+
+                <div class="dash-grid-2">
+                    <!-- Personal Info -->
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-user"></i> Personal Information</div>
+                        </div>
+                        <div class="dash-form-row">
+                            <div class="dash-form-group">
+                                <label>First Name</label>
+                                <input class="dash-input" type="text" value="Julianne">
+                            </div>
+                            <div class="dash-form-group">
+                                <label>Last Name</label>
+                                <input class="dash-input" type="text" value="Moore">
+                            </div>
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Email Address</label>
+                            <input class="dash-input" type="email" value="concierge@purplenest.com">
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Phone Number</label>
+                            <input class="dash-input" type="tel" value="+1 (555) 987-6543">
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Date of Birth</label>
+                            <input class="dash-input" type="date" value="1990-03-15">
+                        </div>
+                        <div class="dash-form-group">
+                            <label>Gender</label>
+                            <select class="dash-select">
+                                <option>Female</option>
+                                <option>Male</option>
+                                <option>Non-binary</option>
+                                <option>Prefer not to say</option>
+                            </select>
+                        </div>
+                        <button class="dash-btn primary" style="width:100%;justify-content:center;"><i
+                                class="fas fa-save"></i> Update Profile</button>
+                    </div>
+
+                    <!-- Security + Preferences -->
+                    <div>
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <div class="dash-card-title"><i class="fas fa-lock"></i> Security</div>
+                            </div>
+                            <div class="dash-form-group">
+                                <label>Current Password</label>
+                                <input class="dash-input" type="password" placeholder="Enter current password">
+                            </div>
+                            <div class="dash-form-group">
+                                <label>New Password</label>
+                                <input class="dash-input" type="password" placeholder="Enter new password">
+                            </div>
+                            <div class="dash-form-group">
+                                <label>Confirm New Password</label>
+                                <input class="dash-input" type="password" placeholder="Confirm new password">
+                            </div>
+                            <button class="dash-btn primary" style="width:100%;justify-content:center;"><i
+                                    class="fas fa-key"></i> Update Password</button>
+                        </div>
+
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <div class="dash-card-title"><i class="fas fa-bell"></i> Notification Preferences</div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Order Updates</h4>
+                                    <p>Shipping and delivery notifications</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Exclusive Offers</h4>
+                                    <p>Members-only deals and promotions</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Wishlist Alerts</h4>
+                                    <p>Price drops on your saved items</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Newsletter</h4>
+                                    <p>Weekly curated luxury picks</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════
+                 SECTION: Support
+            ════════════════════════════════════════════ -->
+            <section class="dash-section" id="sec-support">
+                <div class="dash-breadcrumb">
+                    <i class="fas fa-home"></i> <i class="fas fa-chevron-right"></i> <span>Support</span>
+                </div>
+                <div class="dash-page-header">
+                    <div>
+                        <h1>Support Center</h1>
+                        <p>We're here to help — 24/7 concierge service</p>
+                    </div>
+                    <button class="dash-btn primary"><i class="fas fa-plus"></i> New Ticket</button>
+                </div>
+
+                <div class="dash-stats-row" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap gold"><i class="fas fa-ticket-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Open Tickets</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap green"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>Resolved</p>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon-wrap blue"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <h3>&lt; 2h</h3>
+                            <p>Avg. Response</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-2">
+                    <!-- My Tickets -->
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-title"><i class="fas fa-ticket-alt"></i> My Tickets</div>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-icon"><i class="fas fa-truck"></i></div>
+                            <div class="ticket-body" style="flex:1;">
+                                <h4>Order #PN-91042 — Delivery Delay</h4>
+                                <p>My order has been processing for 2 days. Please update status.</p>
+                                <div
+                                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                                    <span class="badge-pill processing">Open</span>
+                                    <span
+                                        style="font-size:0.75rem;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;">Feb
+                                        18, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-icon"><i class="fas fa-undo"></i></div>
+                            <div class="ticket-body" style="flex:1;">
+                                <h4>Return Request — Cashmere Lounge Set</h4>
+                                <p>Item received damaged. Requesting full refund or replacement.</p>
+                                <div
+                                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                                    <span class="badge-pill shipped">In Review</span>
+                                    <span
+                                        style="font-size:0.75rem;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;">Feb
+                                        15, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-icon" style="background:rgba(39,174,96,0.15);color:#2ecc71;"><i
+                                    class="fas fa-check"></i></div>
+                            <div class="ticket-body" style="flex:1;">
+                                <h4>Payment Issue — Order #PN-89241</h4>
+                                <p>Double charged on credit card. Resolved with full refund.</p>
+                                <div
+                                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                                    <span class="badge-pill delivered">Resolved</span>
+                                    <span
+                                        style="font-size:0.75rem;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;">Oct
+                                        14, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New Ticket + Quick Help -->
+                    <div>
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <div class="dash-card-title"><i class="fas fa-pen"></i> Submit a Ticket</div>
+                            </div>
+                            <div class="dash-form-group">
+                                <label>Subject</label>
+                                <input class="dash-input" type="text" placeholder="Brief description of your issue">
+                            </div>
+                            <div class="dash-form-group">
+                                <label>Category</label>
+                                <select class="dash-select">
+                                    <option>Order Issue</option>
+                                    <option>Return / Refund</option>
+                                    <option>Payment Problem</option>
+                                    <option>Product Inquiry</option>
+                                    <option>Account Help</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="dash-form-group">
+                                <label>Message</label>
+                                <textarea class="dash-textarea" placeholder="Describe your issue in detail…"></textarea>
+                            </div>
+                            <button class="dash-btn primary" style="width:100%;justify-content:center;"><i
+                                    class="fas fa-paper-plane"></i> Submit Ticket</button>
+                        </div>
+
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <div class="dash-card-title"><i class="fas fa-headset"></i> Quick Help</div>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:10px;">
+                                <a href="faq.html" class="dash-btn ghost"
+                                    style="justify-content:flex-start;gap:12px;border-radius:12px;"><i
+                                        class="fas fa-question-circle" style="color:#F5A623;width:20px;"></i> Browse
+                                    FAQs</a>
+                                <a href="shipping.html" class="dash-btn ghost"
+                                    style="justify-content:flex-start;gap:12px;border-radius:12px;"><i
+                                        class="fas fa-truck" style="color:#3498db;width:20px;"></i> Shipping
+                                    Information</a>
+                                <a href="contact.html" class="dash-btn ghost"
+                                    style="justify-content:flex-start;gap:12px;border-radius:12px;"><i
+                                        class="fas fa-phone" style="color:#2ecc71;width:20px;"></i> Call Support</a>
+                                <a href="contact.html" class="dash-btn ghost"
+                                    style="justify-content:flex-start;gap:12px;border-radius:12px;"><i
+                                        class="fas fa-envelope" style="color:#B77FB3;width:20px;"></i> Email Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="dash-mobile-toggle" id="mobileToggle" onclick="toggleSidebar()" title="Open Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        // ── Section Switcher ──────────────────────────────────
+        function switchSection(linkEl, sectionId) {
+            // Update sidebar links
+            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            if (linkEl) linkEl.classList.add('active');
+
+            // Show correct section
+            document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById('sec-' + sectionId);
+            if (target) target.classList.add('active');
+
+            // Close sidebar on mobile
+            if (window.innerWidth <= 900) closeSidebar();
+
+            // Scroll to top of main
+            document.querySelector('.dash-main').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ── Mobile Sidebar ────────────────────────────────────
+        function toggleSidebar() {
+            const sidebar = document.getElementById('userSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('visible');
+        }
+
+        function closeSidebar() {
+            document.getElementById('userSidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('visible');
+        }
+
+        // ── Logout Confirmation ───────────────────────────────
+        function confirmLogout() {
+            if (confirm('Are you sure you want to log out of your account?')) {
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

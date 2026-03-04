@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | PurpleNest</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../data/products.js"></script>
+    <script src="../assets/js/main.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                    <li><a href="platform.html" class="nav-link">Platform</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="margin-top: 100px; padding-bottom: 50px;">
+        <div class="product-detail-container"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
+            <!-- Gallery -->
+            <div class="product-gallery">
+                <div class="main-image-container" style="border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
+                    <img id="main-image" src="" alt="Product Image"
+                        style="width: 100%; height: auto; object-fit: cover;">
+                </div>
+                <!-- Thumbnails (Mockup) -->
+                <div class="thumbnails" style="display: flex; gap: 10px;">
+                    <div
+                        style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 2px solid var(--primary); cursor: pointer;">
+                        <img id="thumb-1" src="" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div
+                        style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; cursor: pointer; opacity: 0.6;">
+                        <img src="https://placehold.co/100x100?text=2"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div
+                        style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; cursor: pointer; opacity: 0.6;">
+                        <img src="https://placehold.co/100x100?text=3"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="product-info-detail">
+                <div id="product-category"
+                    style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+                    Category</div>
+                <h1 id="product-name" style="margin-bottom: 15px; font-size: 2.5rem;">Product Name</h1>
+                <div class="rating-row" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                    <div id="product-rating" style="color: var(--accent);">
+                        <!-- Stars injected -->
+                    </div>
+                    <span id="product-reviews" style="color: #666; font-size: 0.9rem;">(0 Reviews)</span>
+                </div>
+                <div class="price-row" style="margin-bottom: 20px;">
+                    <span id="product-price"
+                        style="font-size: 2rem; font-weight: 700; color: var(--primary);">$0.00</span>
+                    <span id="product-old-price"
+                        style="font-size: 1.2rem; text-decoration: line-through; color: #999; margin-left: 10px;"></span>
+                </div>
+                <p id="product-description" style="color: #666; line-height: 1.6; margin-bottom: 30px;">
+                    Description...
+                </p>
+
+                <!-- Options -->
+                <div style="margin-bottom: 30px;">
+                    <h4 style="margin-bottom: 10px;">Color</h4>
+                    <div style="display: flex; gap: 10px;">
+                        <div
+                            style="width: 30px; height: 30px; border-radius: 50%; background: #000; cursor: pointer; border: 2px solid white; outline: 2px solid var(--primary);">
+                        </div>
+                        <div style="width: 30px; height: 30px; border-radius: 50%; background: #888; cursor: pointer;">
+                        </div>
+                        <div
+                            style="width: 30px; height: 30px; border-radius: 50%; background: #f5f5dc; cursor: pointer; border: 1px solid #ddd;">
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <h4 style="margin-bottom: 10px;">Size</h4>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-outline" style="padding: 8px 16px; min-width: 50px;">S</button>
+                        <button class="btn btn-outline"
+                            style="padding: 8px 16px; min-width: 50px; background: var(--primary); color: white;">M</button>
+                        <button class="btn btn-outline" style="padding: 8px 16px; min-width: 50px;">L</button>
+                        <button class="btn btn-outline" style="padding: 8px 16px; min-width: 50px;">XL</button>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 40px;">
+                    <div class="quantity-selector"
+                        style="display: flex; align-items: center; border: 1px solid #ddd; border-radius: 25px; overflow: hidden;">
+                        <button
+                            style="border: none; background: #fff; width: 40px; height: 40px; cursor: pointer; font-size: 1.2rem;"
+                            onclick="decrementQty()">-</button>
+                        <input type="number" id="qty-input" value="1" min="1"
+                            style="width: 50px; text-align: center; border: none; font-size: 1rem; outline: none;">
+                        <button
+                            style="border: none; background: #fff; width: 40px; height: 40px; cursor: pointer; font-size: 1.2rem;"
+                            onclick="incrementQty()">+</button>
+                    </div>
+                    <button id="add-to-cart-btn" class="btn" style="flex: 1;">Add to Cart</button>
+                    <button class="btn btn-outline" style="flex: 1;">Buy Now</button>
+                </div>
+
+                <!-- Meta -->
+                <div style="border-top: 1px solid #eee; padding-top: 20px; color: #666; font-size: 0.9rem;">
+                    <p><i class="fas fa-truck" style="margin-right: 10px;"></i> Free shipping on orders over $100</p>
+                    <p><i class="fas fa-undo" style="margin-right: 10px;"></i> 30-day return policy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <section class="section py-5" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Related Products</h2>
+            <div id="related-products-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"></footer>
+
+    <script>
+        // Inline JS for Product Details logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+
+            if (!productId) {
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            if (!product) {
+                document.querySelector('.product-detail-container').innerHTML = '<h2>Product not found</h2>';
+                return;
+            }
+
+            // Render Product
+            document.getElementById('main-image').src = product.image;
+            document.getElementById('thumb-1').src = product.image;
+            document.getElementById('product-category').innerText = product.category;
+            document.getElementById('product-name').innerText = product.name;
+            document.getElementById('product-price').innerText = `$${product.price.toFixed(2)}`;
+            if (product.oldPrice) {
+                document.getElementById('product-old-price').innerText = `$${product.oldPrice.toFixed(2)}`;
+            }
+            document.getElementById('product-description').innerText = product.description;
+            document.getElementById('product-rating').innerHTML = getStarRating(product.rating);
+            document.getElementById('product-reviews').innerText = `(${product.reviews} Reviews)`;
+
+            // Add to Cart Logic
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            addToCartBtn.addEventListener('click', () => {
+                const qty = parseInt(document.getElementById('qty-input').value) || 1;
+                Cart.addItem(product, qty);
+            });
+
+            // Related Products
+            const relatedGrid = document.getElementById('related-products-grid');
+            const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+
+            related.forEach(rp => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${rp.image}" alt="${rp.name}">
+                         <div class="product-actions">
+                            <div class="action-btn" onclick="window.location.href='product-details.html?id=${rp.id}'"><i class="far fa-eye"></i></div>
+                        </div>
+                    </div>
+                     <div class="product-info">
+                        <div class="product-category">${rp.category}</div>
+                        <h3 class="product-title">${rp.name}</h3>
+                        <div class="price">$${rp.price.toFixed(2)}</div>
+                    </div>
+                `;
+                relatedGrid.appendChild(card);
+            });
+        });
+
+        // Quantity Logic
+        window.incrementQty = function () { // Attach to window for onclick
+            const input = document.getElementById('qty-input');
+            input.value = parseInt(input.value) + 1;
+        }
+        window.decrementQty = function () {
+            const input = document.getElementById('qty-input');
+            if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+        }
+
+        function getStarRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - 0.5 <= rating) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+    </script>
+</body>
+
+</html>

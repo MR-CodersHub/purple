@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | PurpleNest Premium Luxury Collection</title>
+    <meta name="description"
+        content="Browse our exclusive collection of luxury fashion, electronics, and home decor at PurpleNest.">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../data/products.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/shop.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                    <li><a href="platform.html" class="nav-link">Platform</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <div class="page-title" style="padding: 100px 0 60px; text-align: center; color: var(--white);">
+        <div class="container">
+            <h1 class="hero-title" style="margin-bottom: 10px;">The Collection</h1>
+            <p class="hero-subtitle" style="opacity: 0.95;">Exquisite selection for the discerning individual.</p>
+        </div>
+    </div>
+
+    <!-- Shop Layout: Sidebar + Grid -->
+    <section class="section">
+        <div class="container">
+            <!-- Mobile Filter Toggle -->
+            <div class="mobile-filter-controls">
+                <div class="mobile-filter-btn" id="open-filters">
+                    <i class="fas fa-filter"></i> Filter & Refine
+                </div>
+            </div>
+
+            <div class="shop-layout">
+                <!-- Sidebar (Desktop) -->
+                <aside class="shop-sidebar">
+                    <div class="filter-group">
+                        <h3 class="sidebar-title">Categories</h3>
+                        <div class="category-pills" id="category-filters">
+                            <button class="filter-pill active" data-category="all">All Collection</button>
+                            <button class="filter-pill" data-category="Fashion">Fashion</button>
+                            <button class="filter-pill" data-category="Electronics">Electronics</button>
+                            <button class="filter-pill" data-category="Beauty">Beauty</button>
+                            <button class="filter-pill" data-category="Wellness">Wellness</button>
+                            <button class="filter-pill" data-category="Home Decor">Home Decor</button>
+                            <button class="filter-pill" data-category="Accessories">Accessories</button>
+                            <button class="filter-pill" data-category="Smart Living">Smart Living</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3 class="sidebar-title">Price Range</h3>
+                        <div class="price-filter-container">
+                            <input type="range" min="0" max="1000" value="1000" class="luxury-slider" id="price-range">
+                            <div class="price-values">
+                                <span>$0</span>
+                                <span id="price-display">$1000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="filter-apply-btn" id="apply-filters">Apply Filters</button>
+                </aside>
+
+                <!-- Product Grid Area -->
+                <main class="shop-main">
+                    <div id="products-grid" class="products-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+                        <!-- Products will be injected here -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Filter Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="filter-drawer" id="filter-drawer">
+        <div class="filter-drawer-header">
+            <h3 class="sidebar-title" style="margin-bottom: 0; border: none;">Filter By</h3>
+            <div class="close-drawer" id="close-filters">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <!-- Populated directly to ensure it's never empty -->
+        <div id="drawer-filter-content">
+            <div class="filter-group">
+                <h3 class="sidebar-title">Categories</h3>
+                <div class="category-pills" id="drawer-category-filters">
+                    <button class="filter-pill active" data-category="all">All Collection</button>
+                    <button class="filter-pill" data-category="Fashion">Fashion</button>
+                    <button class="filter-pill" data-category="Electronics">Electronics</button>
+                    <button class="filter-pill" data-category="Beauty">Beauty</button>
+                    <button class="filter-pill" data-category="Wellness">Wellness</button>
+                    <button class="filter-pill" data-category="Home Decor">Home Decor</button>
+                    <button class="filter-pill" data-category="Accessories">Accessories</button>
+                    <button class="filter-pill" data-category="Smart Living">Smart Living</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="sidebar-title">Price Range</h3>
+                <div class="price-filter-container">
+                    <input type="range" min="0" max="1000" value="1000" class="luxury-slider" id="drawer-price-range">
+                    <div class="price-values">
+                        <span>$0</span>
+                        <span id="drawer-price-display">$1000</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="filter-apply-btn" id="drawer-apply-filters">Apply Filters</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Bag | PurpleNest</title>
+    <meta name="description" content="Review your selected luxury items in your shopping bag at PurpleNest.">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/cart-mobile.css">
+    <link rel="stylesheet" href="../assets/css/cart.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart-page.js" defer></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="platform.html" class="nav-link">Platform</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="cart.html" class="active">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container cart-page">
+        <h1 class="section-title">Your Cart</h1>
+
+        <div class="cart-layout">
+            <div class="cart-items-wrapper">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th class="col-product">Product</th>
+                            <th class="col-qty">Quantity</th>
+                            <th class="col-total">Total</th>
+                            <th class="col-remove">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items-container">
+                        <!-- Injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="order-summary">
+                <h3 class="summary-title">Order Summary</h3>
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal</span>
+                    <span id="subtotal" class="summary-value">$0.00</span>
+                </div>
+                <div class="summary-row shipping-row">
+                    <span class="summary-label">Shipping</span>
+                    <span class="summary-value">Calculated at checkout</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span class="summary-label">Total</span>
+                    <span id="total" class="summary-value">$0.00</span>
+                </div>
+                <div class="checkout-wrapper">
+                    <button id="checkout-btn" class="btn btn-checkout"
+                        onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+</body>
+
+</html>

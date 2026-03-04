@@ -1,0 +1,284 @@
+/* Checkout Page Mobile Responsiveness */
+
+/* Tablet and Mobile - 768px and below */
+@media (max-width: 768px) {
+
+    /* Single column layout */
+    .checkout-layout {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Reduce top spacing */
+    .container[style*="margin-top: 100px"] {
+        margin-top: 80px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* Section title */
+    .section-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 20px !important;
+        text-align: center;
+    }
+
+    /* Checkout form card */
+    .checkout-form {
+        background: white !important;
+        padding: 25px 20px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 20px rgba(122, 62, 125, 0.1) !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto;
+    }
+
+    .checkout-form h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 18px !important;
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+
+    /* Form fields */
+    .checkout-form label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--text-color);
+    }
+
+    .checkout-form input[type="text"],
+    .checkout-form input[type="email"] {
+        width: 100% !important;
+        padding: 12px 14px !important;
+        border: 1px solid rgba(122, 62, 125, 0.2) !important;
+        border-radius: 8px !important;
+        font-size: 0.95rem !important;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .checkout-form input:focus {
+        outline: none;
+        border-color: var(--primary) !important;
+        box-shadow: 0 0 0 3px rgba(122, 62, 125, 0.1);
+    }
+
+    /* Stack City and ZIP vertically on mobile */
+    .checkout-form div[style*="grid-template-columns: 1fr 1fr"] {
+        display: block !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    .checkout-form div[style*="grid-template-columns: 1fr 1fr"]>div {
+        margin-bottom: 15px;
+    }
+
+    .checkout-form div[style*="grid-template-columns: 1fr 1fr"]>div:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Payment section spacing */
+    .checkout-form h3[style*="margin-top: 30px"] {
+        margin-top: 25px !important;
+        margin-bottom: 18px !important;
+    }
+
+    /* Payment method container */
+    .checkout-form div[style*="border: 1px solid #ddd"] {
+        border: 1px solid rgba(122, 62, 125, 0.15) !important;
+        border-radius: 10px !important;
+        overflow: hidden;
+        margin-bottom: 20px !important;
+    }
+
+    .checkout-form div[style*="border: 1px solid #ddd"] label {
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    /* Card details inputs */
+    .checkout-form div[style*="background: #f9f9f9"] input {
+        border: 1px solid rgba(122, 62, 125, 0.2) !important;
+        border-radius: 6px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Place Order button */
+    .checkout-form .btn {
+        width: 100% !important;
+        padding: 14px 20px !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        background: var(--gradient-gold) !important;
+        color: var(--primary-dark) !important;
+        border: none !important;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4) !important;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .checkout-form .btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 8px rgba(245, 166, 35, 0.3) !important;
+    }
+
+    /* Order Summary */
+    .order-summary {
+        background: var(--bg-color) !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(122, 62, 125, 0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .order-summary h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 18px !important;
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+
+    .order-summary div[style*="font-size: 1.2rem"] {
+        font-size: 1.15rem !important;
+    }
+}
+
+/* Small Mobile - 480px and below */
+@media (max-width: 480px) {
+
+    /* Tighter container padding */
+    .container[style*="margin-top: 100px"] {
+        margin-top: 70px !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    /* Smaller title */
+    .section-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 18px !important;
+    }
+
+    /* Compact form card */
+    .checkout-form {
+        padding: 20px 16px !important;
+        border-radius: 10px !important;
+    }
+
+    .checkout-form h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Smaller form fields */
+    .checkout-form label {
+        font-size: 0.85rem !important;
+        margin-bottom: 5px;
+    }
+
+    .checkout-form input[type="text"],
+    .checkout-form input[type="email"] {
+        padding: 11px 12px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Compact payment section */
+    .checkout-form h3[style*="margin-top: 30px"] {
+        margin-top: 20px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .checkout-form div[style*="padding: 15px"] {
+        padding: 12px !important;
+    }
+
+    .checkout-form div[style*="background: #f9f9f9"] {
+        padding: 12px !important;
+        padding-left: 25px !important;
+    }
+
+    /* Smaller button */
+    .checkout-form .btn {
+        padding: 13px 18px !important;
+        font-size: 1rem !important;
+    }
+
+    /* Compact order summary */
+    .order-summary {
+        padding: 18px 15px !important;
+    }
+
+    .order-summary h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 15px !important;
+    }
+
+    .order-summary div[style*="font-size: 1.2rem"] {
+        font-size: 1.05rem !important;
+    }
+}
+
+/* Extra Small Mobile - 360px and below */
+@media (max-width: 360px) {
+    .checkout-form {
+        padding: 18px 14px !important;
+    }
+
+    .checkout-form input[type="text"],
+    .checkout-form input[type="email"] {
+        padding: 10px 11px !important;
+        font-size: 0.88rem !important;
+    }
+
+    .checkout-form .btn {
+        padding: 12px 16px !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Prevent horizontal scrolling */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .checkout-layout {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Ensure all inputs are properly sized */
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Center form on larger mobile devices */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    .checkout-form,
+    .order-summary {
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

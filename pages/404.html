@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 – Page Not Found | PurpleNest</title>
+    <meta name="description"
+        content="Oops! The page you're looking for doesn't exist. Return to PurpleNest and continue exploring our luxury collections.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════
+           404 PAGE — PurpleNest Luxury Theme
+        ═══════════════════════════════════════════════════════ */
+
+        /* Full-page flex wrapper so footer sticks to bottom */
+        .page-404-layout {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Background Orbs ── */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            top: -15%;
+            left: -12%;
+            background: radial-gradient(circle, rgba(183, 127, 179, 0.2) 0%, transparent 70%);
+            animation: orbFloat1 14s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -12%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.14) 0%, transparent 70%);
+            animation: orbFloat2 18s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 700px;
+            height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(122, 62, 125, 0.09) 0%, transparent 65%);
+            animation: orbFloat3 22s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(40px, 30px) scale(1.06);
+            }
+
+            66% {
+                transform: translate(-25px, 50px) scale(0.94);
+            }
+        }
+
+        @keyframes orbFloat2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-50px, -30px) scale(1.08);
+            }
+
+            66% {
+                transform: translate(30px, -50px) scale(0.92);
+            }
+        }
+
+        @keyframes orbFloat3 {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.12);
+            }
+        }
+
+        /* ── Floating Particles ── */
+        .particles-wrap {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleRise linear infinite;
+        }
+
+        @keyframes particleRise {
+            0% {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            8% {
+                opacity: 1;
+            }
+
+            92% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ── Main 404 Section ── */
+        .error-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── Glass Card ── */
+        .error-card {
+            text-align: center;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(90, 42, 95, 0.32);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 36px;
+            padding: 64px 52px 60px;
+            box-shadow:
+                0 32px 80px rgba(0, 0, 0, 0.32),
+                0 0 0 1px rgba(183, 127, 179, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            animation: cardIn 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle inner shimmer */
+        .error-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+            animation: cardShimmer 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes cardShimmer {
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(48px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ── Crown Badge ── */
+        .error-badge {
+            width: 84px;
+            height: 84px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            font-size: 2.1rem;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(245, 166, 35, 0.5);
+            animation: badgePulse 3.5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 32px rgba(245, 166, 35, 0.5);
+            }
+
+            50% {
+                transform: scale(1.07);
+                box-shadow: 0 14px 48px rgba(245, 166, 35, 0.7);
+            }
+        }
+
+        /* ── 404 Number ── */
+        .error-number {
+            font-family: var(--font-heading);
+            font-size: clamp(6rem, 18vw, 12rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #ffffff 0%, #F8B84E 45%, #F5A623 70%, #ffffff 100%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -6px;
+            animation: numShimmer 5s linear infinite;
+            filter: drop-shadow(0 0 30px rgba(245, 166, 35, 0.35));
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes numShimmer {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 250% center;
+            }
+        }
+
+        /* ── Gold Divider ── */
+        .error-divider {
+            width: 72px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+            margin: 18px auto 28px;
+            animation: divGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes divGlow {
+
+            0%,
+            100% {
+                width: 72px;
+                opacity: 0.8;
+            }
+
+            50% {
+                width: 110px;
+                opacity: 1;
+            }
+        }
+
+        /* ── Heading ── */
+        .error-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: #fff;
+            margin-bottom: 16px;
+            font-weight: 700;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Message ── */
+        .error-message {
+            font-size: clamp(0.95rem, 2vw, 1.08rem);
+            color: rgba(255, 255, 255, 0.76);
+            line-height: 1.75;
+            margin-bottom: 48px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Action Buttons ── */
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 52px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-actions .btn {
+            min-width: 180px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.84rem;
+        }
+
+        /* Ghost / outline button variant */
+        .btn-ghost-404 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 180px;
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.09);
+            color: #fff;
+            border: 1.5px solid rgba(255, 255, 255, 0.22);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.84rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-ghost-404:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(245, 166, 35, 0.5);
+            color: #F5A623;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+        }
+
+        /* ── Quick Links ── */
+        .error-quick-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-quick-label {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 18px;
+        }
+
+        .quick-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            backdrop-filter: blur(8px);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .chip i {
+            font-size: 0.74rem;
+            color: var(--accent-light);
+        }
+
+        .chip:hover {
+            background: rgba(245, 166, 35, 0.15);
+            border-color: rgba(245, 166, 35, 0.38);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.15);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 48px 28px 48px;
+                border-radius: 28px;
+            }
+
+            .error-badge {
+                width: 70px;
+                height: 70px;
+                font-size: 1.75rem;
+                margin-bottom: 24px;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-actions .btn,
+            .btn-ghost-404 {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-section {
+                padding: 100px 14px 60px;
+            }
+
+            .error-card {
+                padding: 36px 18px 40px;
+                border-radius: 22px;
+            }
+
+            .error-number {
+                letter-spacing: -3px;
+            }
+
+            .chip {
+                font-size: 0.78rem;
+                padding: 7px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+         HEADER
+    ══════════════════════════════════════ -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="platform.html" class="nav-link">Platform</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+         BACKGROUND DECORATIONS
+    ══════════════════════════════════════ -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
+    <div class="particles-wrap" id="particles-wrap" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════
+         MAIN LAYOUT WRAPPER
+    ══════════════════════════════════════ -->
+    <div class="page-404-layout">
+
+        <!-- 404 Content -->
+        <main class="error-section" id="main-content" aria-label="404 Error – Page Not Found">
+            <div class="error-card">
+
+                <!-- Crown Badge -->
+                <div class="error-badge" aria-hidden="true">
+                    <i class="fas fa-crown"></i>
+                </div>
+
+                <!-- 404 Number -->
+                <div class="error-number" aria-label="Error code 404">404</div>
+
+                <!-- Gold Divider -->
+                <div class="error-divider" aria-hidden="true"></div>
+
+                <!-- Page Heading -->
+                <h1 class="error-heading">Page Not Found</h1>
+
+                <!-- Friendly Message -->
+                <p class="error-message">
+                    It seems this page has wandered off our luxury collection. The page you're looking for
+                    may have been moved, renamed, or no longer exists — but our curated world is still waiting for you.
+                </p>
+
+                <!-- Primary Navigation Buttons -->
+                <div class="error-actions">
+                    <a href="../index.html" class="btn" id="btn-home">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="shop.html" class="btn-ghost-404" id="btn-shop">
+                        <i class="fas fa-shopping-bag"></i> Shop Collection
+                    </a>
+                    <a href="contact.html" class="btn-ghost-404" id="btn-contact">
+                        <i class="fas fa-headset"></i> Contact Support
+                    </a>
+                </div>
+
+                <!-- Quick Navigation Chips -->
+                <div class="error-quick-section">
+                    <p class="error-quick-label">Popular Destinations</p>
+                    <div class="quick-chips">
+                        <a href="about.html" class="chip" id="chip-about">
+                            <i class="fas fa-info-circle"></i> About Us
+                        </a>
+                        <a href="shop.html?cat=Fashion" class="chip" id="chip-fashion">
+                            <i class="fas fa-tshirt"></i> Fashion
+                        </a>
+                        <a href="shop.html?cat=Electronics" class="chip" id="chip-electronics">
+                            <i class="fas fa-laptop"></i> Electronics
+                        </a>
+                        <a href="shop.html?cat=Home%20Decor" class="chip" id="chip-decor">
+                            <i class="fas fa-couch"></i> Home Decor
+                        </a>
+                        <a href="faq.html" class="chip" id="chip-faq">
+                            <i class="fas fa-question-circle"></i> FAQs
+                        </a>
+                        <a href="wishlist.html" class="chip" id="chip-wishlist">
+                            <i class="far fa-heart"></i> Wishlist
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer"></footer>
+
+    </div><!-- /.page-404-layout -->
+
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        /* ── Floating Particles ── */
+        (function spawnParticles() {
+            const wrap = document.getElementById('particles-wrap');
+            const colors = [
+                'rgba(183,127,179,0.45)',
+                'rgba(245,166,35,0.38)',
+                'rgba(255,255,255,0.22)',
+                'rgba(122,62,125,0.4)',
+                'rgba(248,184,78,0.32)'
+            ];
+
+            for (let i = 0; i < 24; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 11 + 4;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 14 + 12;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                p.style.cssText = [
+                    `width:${size}px`,
+                    `height:${size}px`,
+                    `left:${left}%`,
+                    `background:${color}`,
+                    `animation-delay:${delay}s`,
+                    `animation-duration:${duration}s`,
+                    size > 11 ? 'filter:blur(2px)' : ''
+                ].filter(Boolean).join(';');
+
+                wrap.appendChild(p);
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

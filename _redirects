@@ -1,0 +1,6 @@
+# PurpleNest – Netlify Redirects
+# Routes all unmatched URLs to the custom 404 page.
+# Place this file in the root of your website.
+
+# Custom 404 page
+/*    /404.html   404

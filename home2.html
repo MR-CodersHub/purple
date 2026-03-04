@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PurpleNest | Elevated Living, Redefined Luxury</title>
+    <meta name="description"
+        content="PurpleNest - Discover curated luxury in fashion, electronics, and home decor. Experience premium quality and timeless design for the modern lifestyle.">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="data/products.js"></script>
+    <script src="assets/js/main.js"></script>
+    <style>
+        /* Home2 Specific Styles */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 100px 0 60px;
+            gap: 40px;
+        }
+
+        .hero-split-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-split-image {
+            flex: 1;
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-split-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(183, 127, 179, 0.2) 0%, rgba(90, 42, 95, 0.3) 100%);
+        }
+
+        .hero-title-refined {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--white);
+            font-weight: 700;
+            text-shadow: 0 4px 10px rgba(59, 42, 61, 0.3);
+        }
+
+        .hero-subtitle-refined {
+            font-size: 1.25rem;
+            color: var(--white);
+            opacity: 0.9;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            color: var(--text-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(122, 62, 125, 0.05);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-purple);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(122, 62, 125, 0.2);
+        }
+
+        .feature-box h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* Collections Preview */
+        .collections-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .collection-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 350px;
+            box-shadow: var(--shadow);
+        }
+
+        .collection-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .collection-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .collection-item:hover .collection-overlay {
+            background: linear-gradient(to top, rgba(90, 42, 95, 0.9) 0%, rgba(90, 42, 95, 0.3) 100%);
+        }
+
+        .collection-title {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .collection-link {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .collection-link i {
+            transition: transform 0.3s;
+        }
+
+        .collection-item:hover .collection-link i {
+            transform: translateX(5px);
+        }
+
+        /* Luxury Experience Layout */
+        .experience-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 60px;
+            margin-top: 100px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-image-wrapper {
+            flex: 1;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .experience-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .experience-content h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .experience-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* CTA Banner */
+        .premium-cta {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border-radius: var(--radius);
+            padding: 80px 40px;
+            text-align: center;
+            margin-top: 100px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: pulse 15s infinite;
+        }
+
+        .premium-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .premium-cta h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Clean Testimonial Cards */
+        .reviews-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .review-box {
+            background: var(--white);
+            color: var(--text-color);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .review-quote-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: rgba(122, 62, 125, 0.1);
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #444;
+            position: relative;
+            z-index: 2;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 20px;
+        }
+
+        .review-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-author-info h4 {
+            color: var(--primary-dark);
+            margin: 0 0 4px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+        }
+
+        .review-author-info span {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 1024px) {
+            .hero-split {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-split-image {
+                width: 100%;
+                height: 50vh;
+                min-height: 400px;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .experience-section {
+                flex-direction: column;
+                padding: 40px 20px;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .experience-image-wrapper {
+                width: 100%;
+                height: 400px;
+            }
+
+            .hero-title-refined {
+                font-size: 3.5rem;
+            }
+
+            .premium-cta h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title-refined {
+                font-size: 2.8rem;
+            }
+
+            .experience-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .premium-cta h2 {
+                font-size: 2rem;
+            }
+
+            .premium-cta {
+                padding: 60px 20px;
+            }
+
+            .collection-item {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <!-- Navigation inserted by JS mostly, but hardcoded here for layout -->
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="home2.html" class="nav-link active">Home2</a></li>
+                    <li><a href="pages/about.html" class="nav-link">About</a></li>
+                    <li><a href="pages/shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="pages/platform.html" class="nav-link">Platform</a></li>
+                    <li><a href="pages/services.html" class="nav-link">Services</a></li>
+                    <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="pages/wishlist.html"><i class="far fa-heart"></i></a>
+                    </div>
+                    <div class="nav-icon">
+                        <a href="pages/cart.html">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="nav-icon user-icon">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="pages/login.html">Log In</a>
+                            <a href="pages/signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Split Hero Section -->
+    <section class="container">
+        <div class="hero-split">
+            <div class="hero-split-content">
+                <h1 class="hero-title-refined">Elevated Living,<br>Redefined Luxury</h1>
+                <p class="hero-subtitle-refined">Transform your sanctuary with meticulously crafted pieces designed to
+                    stand the test of time. Discover an unparalleled lifestyle through our exclusive selections.</p>
+                <div class="hero-actions">
+                    <a href="pages/shop.html" class="btn">Explore Collections</a>
+                    <a href="pages/about.html" class="btn btn-outline"
+                        style="border-color: rgba(255,255,255,0.5); color: #fff;">Discover Our Story</a>
+                </div>
+            </div>
+            <div class="hero-split-image">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200"
+                    alt="Luxurious Modern Home">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section py-5" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Why Choose PurpleNest</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Premium Craftsmanship</h3>
+                    <p>Every piece is carefully vetted for exceptional quality, ensuring enduring elegance and unmatched
+                        durability.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-truck-loading"></i></div>
+                    <h3>White-Glove Delivery</h3>
+                    <p>Experience seamless, effortless delivery and assembly tailored specifically to fit your premium
+                        lifestyle.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Sustainable Luxury</h3>
+                    <p>Consciously curated goods that fuse high-end aesthetics with environmentally responsible
+                        practices.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Exclusive Designs</h3>
+                    <p>Access limited-edition creations from world-renowned designers unavailable anywhere else.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Preview Grid -->
+    <section class="section py-5" style="padding: 4rem 0; background: rgba(0,0,0,0.1);">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 2rem;">Featured Collections</h2>
+            <div class="collections-nav-grid">
+                <div class="collection-item">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800"
+                        alt="Men's Elite Footwear">
+                    <div class="collection-overlay">
+                        <div class="collection-title">Elite Apparel</div>
+                        <a href="pages/shop.html?category=Fashion" class="collection-link">Shop Styles <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80&w=800"
+                        alt="Designer Interior">
+                    <div class="collection-overlay">
+                        <div class="collection-title">Curated Spaces</div>
+                        <a href="pages/shop.html?category=Home" class="collection-link">Shop Living <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=800"
+                        alt="Tech Innovations">
+                    <div class="collection-overlay">
+                        <div class="collection-title">Smart Tech</div>
+                        <a href="pages/shop.html?category=Electronics" class="collection-link">Shop Tech <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Experience Layout -->
+    <section class="section py-5" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="experience-section">
+                <div class="experience-content">
+                    <h2>Immerse Yourself in Pure Elegance</h2>
+                    <p>We believe that luxury is not just a price point, but a deeply personal experience. From the
+                        moment you browse our curated catalogs to the white-glove delivery at your doorstep, PurpleNest
+                        ensures an unparalleled journey.</p>
+                    <p>Impeccable aesthetics meets functional artistry. Let us help you define your unique narrative
+                        through spaces and pieces that inspire absolute confidence.</p>
+                    <a href="pages/about.html" class="btn btn-accent" style="margin-top: 20px;">Explore Our Standard</a>
+                </div>
+                <div class="experience-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000"
+                        alt="Luxurious Living Space">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Testimonials -->
+    <section class="section py-5" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">From Our Community</h2>
+            <div class="reviews-clean">
+                <div class="review-box">
+                    <i class="fas fa-quote-right review-quote-icon"></i>
+                    <p class="review-text">"PurpleNest fundamentally changed my home aesthetic. Every single item I
+                        purchased exudes sophistication. The delivery was remarkably flawless and the quality is
+                        absolutely stunning."</p>
+                    <div class="review-author">
+                        <img src="https://i.pravatar.cc/150?u=12" alt="Eleanor V.">
+                        <div class="review-author-info">
+                            <h4>Eleanor V.</h4>
+                            <span>Verified Society Member</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-box">
+                    <i class="fas fa-quote-right review-quote-icon"></i>
+                    <p class="review-text">"I have bought high-end furniture before, but the curated selection here is
+                        beyond anything I've seen. Truly magnificent pieces that anchor the entire room beautifully."
+                    </p>
+                    <div class="review-author">
+                        <img src="https://i.pravatar.cc/150?u=24" alt="Julian T.">
+                        <div class="review-author-info">
+                            <h4>Julian T.</h4>
+                            <span>Architect & Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-box">
+                    <i class="fas fa-quote-right review-quote-icon"></i>
+                    <p class="review-text">"From the smart tech accessories to the timeless decor, the cohesive vision
+                        of PurpleNest allows me to shop with complete confidence, knowing every piece is elite."</p>
+                    <div class="review-author">
+                        <img src="https://i.pravatar.cc/150?u=36" alt="Marcus C.">
+                        <div class="review-author-info">
+                            <h4>Marcus C.</h4>
+                            <span>Technology Columnist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="container" style="padding-bottom: 80px;">
+        <div class="premium-cta">
+            <div class="premium-cta-content">
+                <h2>Ready to Elevate Your Lifestyle?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">Join thousands of discerning
+                    individuals who have already transformed their everyday experience.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="pages/shop.html" class="btn btn-accent">Shop The Collection</a>
+                    <a href="pages/signup.html" class="btn btn-outline"
+                        style="border-color: rgba(255,255,255,0.6); color: #fff;">Join the Community</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"></footer>
+
+</body>
+
+</html>

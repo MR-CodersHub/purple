@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join PurpleNest | Create Your Luxury Account</title>
+    <meta name="description"
+        content="Create a PurpleNest account to start your journey into a world of curated digital luxury.">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon.png?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/js/main.js"></script>
+    <style>
+        .password-input-wrapper input {
+            padding-right: 50px !important;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body class="auth-page">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">Purple<span>Nest</span></div>
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../home2.html" class="nav-link">Home2</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="nav-icon user-icon active">
+                        <i class="far fa-user"></i>
+                        <div class="user-dropdown">
+                            <a href="login.html">Log In</a>
+                            <a href="signup.html" class="active">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Join the Nest</h1>
+                <p>Create your exclusive membership today</p>
+            </div>
+            <form id="signup-form" class="auth-form" novalidate>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Julianne Moore" required>
+                    <small class="error-msg" id="name-error"
+                        style="color: #e74c3c; display: none; font-size: 0.8rem; margin-top: 5px;">Please enter your
+                        full name.</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="concierge@purplenest.com" required>
+                    <small class="error-msg" id="email-error"
+                        style="color: #e74c3c; display: none; font-size: 0.8rem; margin-top: 5px;">Please enter a valid
+                        email address.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password" placeholder="At least 8 characters" required>
+                        <i class="far fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                    <small class="error-msg" id="password-error"
+                        style="color: #e74c3c; display: none; font-size: 0.8rem; margin-top: 5px;">Password must be at
+                        least 8 characters.</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="confirm-password" placeholder="Repeat your password" required>
+                        <i class="far fa-eye toggle-password" id="toggleConfirmPassword"></i>
+                    </div>
+                    <small class="error-msg" id="confirm-error"
+                        style="color: #e74c3c; display: none; font-size: 0.8rem; margin-top: 5px;">Passwords do not
+                        match.</small>
+                </div>
+                <button type="submit" class="btn btn-block">Create Account</button>
+                <div class="auth-footer">
+                    <p>Already a member? <a href="login.html">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer" style="padding: 40px 0; margin-top: 0;">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2024 PurpleNest Luxury Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Password Toggles
+            const setupToggle = (toggleId, inputId) => {
+                const toggle = document.querySelector(toggleId);
+                const input = document.querySelector(inputId);
+                if (toggle && input) {
+                    toggle.addEventListener('click', function () {
+                        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                        input.setAttribute('type', type);
+                        this.classList.toggle('fa-eye');
+                        this.classList.toggle('fa-eye-slash');
+                    });
+                }
+            };
+
+            setupToggle('#togglePassword', '#password');
+            setupToggle('#toggleConfirmPassword', '#confirm-password');
+
+            // Form Validation and Submission
+            const signupForm = document.querySelector('#signup-form');
+            const nameInput = document.querySelector('#fullname');
+            const emailInput = document.querySelector('#email');
+            const passwordInput = document.querySelector('#password');
+            const confirmInput = document.querySelector('#confirm-password');
+
+            const nameError = document.querySelector('#name-error');
+            const emailError = document.querySelector('#email-error');
+            const passwordError = document.querySelector('#password-error');
+            const confirmError = document.querySelector('#confirm-error');
+
+            if (signupForm) {
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let isValid = true;
+
+                    // Reset errors
+                    [nameError, emailError, passwordError, confirmError].forEach(err => err.style.display = 'none');
+                    [nameInput, emailInput, passwordInput, confirmInput].forEach(inp => inp.style.borderColor = '');
+
+                    // Validate Name
+                    if (nameInput.value.trim().length < 2) {
+                        nameError.style.display = 'block';
+                        nameInput.style.borderColor = '#e74c3c';
+                        isValid = false;
+                    }
+
+                    // Validate Email
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(emailInput.value)) {
+                        emailError.style.display = 'block';
+                        emailInput.style.borderColor = '#e74c3c';
+                        isValid = false;
+                    }
+
+                    // Validate Password
+                    if (passwordInput.value.length < 8) {
+                        passwordError.style.display = 'block';
+                        passwordInput.style.borderColor = '#e74c3c';
+                        isValid = false;
+                    }
+
+                    // Validate Confirm Password
+                    if (confirmInput.value !== passwordInput.value) {
+                        confirmError.style.display = 'block';
+                        confirmInput.style.borderColor = '#e74c3c';
+                        isValid = false;
+                    }
+
+                    if (isValid) {
+                        const btn = signupForm.querySelector('button');
+                        btn.disabled = true;
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+
+                        setTimeout(() => {
+                            Cart.showToast('Account created! Welcome to PurpleNest.');
+                            setTimeout(() => {
+                                window.location.href = 'login.html';
+                            }, 1000);
+                        }, 1500);
+                    }
+                });
+            }
+        });
+    </script>
+    <footer class="footer"></footer>
+</body>
+
+</html>
